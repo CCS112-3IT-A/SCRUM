@@ -320,6 +320,43 @@ function closeUpdateModal() {
         });
     });
 });
+
+//// DITO KOO NAPUTOL
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Function to count tasks in different states
+    function countTasks() {
+        var todoCount = 0;
+        var pendingCount = 0;
+        var finishedCount = 0;
+
+        var rows = document.querySelectorAll('#task-table tbody tr');
+
+        rows.forEach(function (row) {
+            var status = row.cells[4].innerText.trim().toLowerCase();
+
+            if (status === 'inprogress') {
+                todoCount++;
+            } else if (status === 'pending') {
+                pendingCount++;
+            } else if (status === 'completed') {
+                finishedCount++;
+            }
+        });
+
+        // Update counts in the UI
+        document.getElementById('todo-count').innerText = todoCount + " tasks";
+        document.getElementById('pending-count').innerText = pendingCount + " tasks";
+        document.getElementById('finished-count').innerText = finishedCount + " tasks";
+    }
+
+    // Initial count
+    countTasks();
+});
+
+
+
+
                
 
 
