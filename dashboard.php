@@ -138,7 +138,6 @@ $result = mysqli_query($conn, "Select * From tblTask ");
                         <option value="" disabled selected>Choose status</option>
                         <option value="pending">Pending</option>
                         <option value="inprogress">In Progress</option>
-                        <option value="completed">Completed</option>
                     </select>
                     <label for="taskStatus">Task Status</label>
                 </div>
