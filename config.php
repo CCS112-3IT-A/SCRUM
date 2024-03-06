@@ -5,7 +5,7 @@ $username = "root";
 $password = "";
 $dbname = "dbTaskManager";
 
-// Create connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
