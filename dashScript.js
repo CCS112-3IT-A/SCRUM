@@ -6,7 +6,7 @@ function searchTask() {
 
     for (let i = 1; i < rows.length; i++) {  // Start from 1 to skip header row
         const cells = rows[i].getElementsByTagName('td');
-        const taskNameCell = cells[0]; // First column contains task names
+        const taskNameCell = cells[2]; // First column contains task names
         const taskName = taskNameCell.textContent.toLowerCase(); // Get text content of the task name cell
 
         if (taskName.includes(searchInput)) {
