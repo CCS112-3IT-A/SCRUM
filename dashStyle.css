@@ -185,7 +185,7 @@ td:last-child {
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 2% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
@@ -221,7 +221,7 @@ td:last-child {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin-top: 90px;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
@@ -249,12 +249,13 @@ td:last-child {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 80%; /* Adjust the width as needed */
-    max-width: 300px; /* Set a maximum width for smaller screens */
+    max-width: 900px; /* Set a maximum width for smaller screens */
+    height: 400px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 /* Close Button */

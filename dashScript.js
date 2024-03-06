@@ -6,7 +6,7 @@ function searchTask() {
 
     for (let i = 1; i < rows.length; i++) {  // Start from 1 to skip header row
         const cells = rows[i].getElementsByTagName('td');
-        const taskNameCell = cells[0]; // First column contains task names
+        const taskNameCell = cells[2]; // First column contains task names
         const taskName = taskNameCell.textContent.toLowerCase(); // Get text content of the task name cell
 
         if (taskName.includes(searchInput)) {
@@ -51,7 +51,6 @@ countToDoTasks();
 countTasks();
 
 
-// SORT AND FILTER:
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize dropdowns
     var filterDropdowns = document.querySelectorAll('.filter-select');
@@ -89,11 +88,13 @@ document.addEventListener('DOMContentLoaded', function () {
             var aValue = a.children[columnIndex].innerText.trim();
             var bValue = b.children[columnIndex].innerText.trim();
 
-            if (columnIndex === 1) { // Due Date column
+            if (columnIndex === 3) { // Due Date column
                 var aDate = parseDate(aValue);
                 var bDate = parseDate(bValue);
                 return (sortBy === 'asc') ? aDate - bDate : bDate - aDate;
-            } else if (columnIndex === 2) { // Status column
+            } else if (columnIndex === 4) { // Status column
+                return (sortBy === 'asc') ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+            } else { // For other columns, compare as strings
                 return (sortBy === 'asc') ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
             }
         });
@@ -129,16 +130,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to get column index based on filter value
     function getColumnIndex(filterValue) {
         switch (filterValue) {
-            case 'taskName':
+            case 'ID':
                 return 0;
-            case 'dueDate':
+            case 'name':
                 return 1;
-            case 'status':
+            case 'taskName':
                 return 2;
-            case 'description':
+            case 'dueDate':
                 return 3;
+            case 'status':
+                return 4;
+            case 'description':
+                return 5;
             default:
-                return 0;
+                return 6;
         }
     }
 });
