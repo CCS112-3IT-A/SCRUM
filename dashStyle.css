@@ -246,12 +246,12 @@ td:last-child {
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 50%;
-    top: 50%;
+    left: 45%;
+    top: 45%;
     transform: translate(-50%, -50%);
-    max-width: 900px; /* Set a maximum width for smaller screens */
+    max-width: 700px; /* Set a maximum width for smaller screens */
     height: 400px;
-    padding: 20px;
+    padding: 1%;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
