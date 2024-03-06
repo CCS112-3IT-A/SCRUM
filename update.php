@@ -2,7 +2,7 @@
 include_once("config.php");
 include_once("GaS.php"); 
 
-// Check if form data is submitted
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Create a new UserTask object
     $task = new UserTask();
