@@ -130,7 +130,7 @@ $result = mysqli_query($conn, "Select * From tblTask ");
                     <label for="taskName">Task Name</label>
                 </div>
                 <div class="input-field">
-                    <input type="date" id="dueDate" name="dueDate" required>
+                    <input type="date" id="dueDate" name="dueDate" readonly>
                     <label for="dueDate">Due Date</label>
                 </div>
                 <div class="input-field">
@@ -170,7 +170,7 @@ $result = mysqli_query($conn, "Select * From tblTask ");
                 <label for="updateTaskName">Task Name</label>
             </div>
             <div class="input-field">
-                <input type="date" id="updateDueDate" name="updateDueDate" required>
+                <input type="date" id="updateDueDate" name="updateDueDate" readonly>
                 <label for="updateDueDate">Due Date</label>
             </div>
             <div class="input-field">
@@ -221,6 +221,14 @@ $result = mysqli_query($conn, "Select * From tblTask ");
                     var addButton = document.getElementById('AddModal');
                     var addTaskModal = document.getElementById('addTaskModal');
                     var closeButtons = document.querySelectorAll('.close');
+                    var dueDateInput = document.getElementById('dueDate');
+
+                    // Set the default value for the due date to today
+                    var today = new Date();
+                    var formattedDate = today.toISOString().split('T')[0];
+                    dueDateInput.value = formattedDate;
+
+                    
 
                     addButton.addEventListener('click', function () {
                         M.Modal.getInstance(addTaskModal).open();
@@ -232,12 +240,15 @@ $result = mysqli_query($conn, "Select * From tblTask ");
                         });
                     });
 
+
+
                     var taskForm = document.getElementById('taskForm');
 
                     taskForm.addEventListener('submit', function (event) {
                         var nameInput = document.getElementById('name');
                         var taskNameInput = document.getElementById('taskName');
                         var taskDesc= document.getElementById('taskDescription');
+                
 
                         if (nameInput.value.length < 5 || taskNameInput.value.length < 5 || taskDesc.value.length < 5) {
                             alert('Input must be 5 characters long!');
@@ -258,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var dueDate = button.getAttribute('data-duedate');
             var taskStatus = button.getAttribute('data-taskstatus');
             var taskDescription = button.getAttribute('data-taskdescription');
-
+            
             // Set values in the update modal
             document.getElementById('updateUserID').value = userID;
             document.getElementById('updateName').value = name;
