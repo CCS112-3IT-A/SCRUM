@@ -213,24 +213,39 @@ $result = mysqli_query($conn, "Select * From tblTask ");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var modals = document.querySelectorAll('.modal');
-            M.Modal.init(modals);
 
-            var addButton = document.getElementById('AddModal');
-            var addTaskModal = document.getElementById('addTaskModal');
-            var closeButtons = document.querySelectorAll('.close');
+            document.addEventListener('DOMContentLoaded', function () {
+                    var modals = document.querySelectorAll('.modal');
+                    M.Modal.init(modals);
 
-            addButton.addEventListener('click', function () {
-                M.Modal.getInstance(addTaskModal).open();
-            });
+                    var addButton = document.getElementById('AddModal');
+                    var addTaskModal = document.getElementById('addTaskModal');
+                    var closeButtons = document.querySelectorAll('.close');
 
-            closeButtons.forEach(function (closeBtn) {
-                closeBtn.addEventListener('click', function () {
-                    M.Modal.getInstance(addTaskModal).close();
+                    addButton.addEventListener('click', function () {
+                        M.Modal.getInstance(addTaskModal).open();
+                    });
+
+                    closeButtons.forEach(function (closeBtn) {
+                        closeBtn.addEventListener('click', function () {
+                            M.Modal.getInstance(addTaskModal).close();
+                        });
+                    });
+
+                    var taskForm = document.getElementById('taskForm');
+
+                    taskForm.addEventListener('submit', function (event) {
+                        var nameInput = document.getElementById('name');
+                        var taskNameInput = document.getElementById('taskName');
+                        var taskDesc= document.getElementById('taskDescription');
+
+                        if (nameInput.value.length < 5 || taskNameInput.value.length < 5 || taskDesc.value.length < 5) {
+                            alert('Input must be 5 characters long!');
+                            event.preventDefault(); // Prevent the form submission
+                        }
+                    });
                 });
-            });
-        });
+
 
         // Event listener to handle clicking the update button
 document.addEventListener('DOMContentLoaded', function() {
@@ -252,11 +267,30 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('updateTaskStatus').value = taskStatus;
             document.getElementById('updateTaskDescription').value = taskDescription;
 
+            
+
             // Open the update modal
             document.getElementById('updateTaskModal').style.display = 'block';
         });
     });
 });
+
+
+    var updateTaskForm = document.getElementById('updateTaskForm');
+
+            updateTaskForm.addEventListener('submit', function (event) {
+                var updateNameInput = document.getElementById('updateName');
+                var updateTaskNameInput = document.getElementById('updateTaskName');
+                var updateTaskDesc = document.getElementById('updateTaskDescription')
+
+                // Validation for Name and Task Name
+                if (updateNameInput.value.length < 5 || updateTaskNameInput.value.length < 5 || updateTaskDesc.value.length <5 ) {
+                    alert('Input must be 5 character long! ');
+                    event.preventDefault(); 
+                    return;
+                }
+                
+            });
 
 // Function to close the update modal
 function closeUpdateModal() {
@@ -320,7 +354,7 @@ function closeUpdateModal() {
     });
 });
 
-//// DITO KOO NAPUTOL
+
 
 document.addEventListener('DOMContentLoaded', function () {
     // Function to count tasks in different states
